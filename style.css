@@ -1,0 +1,95 @@
+body {
+  background-color: #ff6666;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  padding: 0;
+  font-family: inherit;
+  background-color: transparent;
+  font-size: 100%;
+  text-transform: capitalize;
+  border-color: #b13333;
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+button:hover {
+  transition: 0.4s;
+  background-color: #b13333;
+}
+
+button.change-duration {
+  transition-duration: 0.4s;
+  border-color: #b13333;
+  border-radius: 4px;
+  width: 20px;
+}
+
+#start-pause,
+#reset {
+  width: 100px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+button.change-duration:hover {
+  transition-duration: 0.4s;
+  background-color: #b13333;
+}
+
+#button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#timer-container {
+  font-size: 60px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#duration-container {
+  margin-top: 30px;
+  display: grid;
+  justify-content: center;
+  grid-column-gap: 20px;
+  grid-row-gap: 10px;
+  grid-template-areas:
+    "pomodoro-len pomodoro-len pomodoro-len break-len break-len break-len"
+    "pomodoro-minus pomodoro-min pomodoro-plus break-minus break-min break-plus";
+}
+
+#pomodoro-len {
+  grid-area: pomodoro-len;
+}
+
+#break-len {
+  grid-area: break-len;
+}
+
+#pomodoro-minus {
+  grid-area: pomodoro-minus;
+}
+
+#pomodoro-min {
+  grid-area: pomodoro-min;
+}
+
+#pomodoro-plus {
+  grid-area: pomodoro-plus;
+}
+
+#break-minus {
+  grid-area: break-minus;
+}
+
+#break-min {
+  grid-area: break-min;
+}
+
+#break-plus {
+  grid-area: break-plus;
+}

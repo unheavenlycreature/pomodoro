@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pomodoro Timer</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="timer-container">
+      🍅⏰
+      <span id="timer" data-ticking="false">25:00</span>
+      ⏰🍅
+    </div>
+    <div id="button-container">
+      <button id="start-pause" class="start" value="start">
+        Start
+      </button>
+      <button id="reset" value="reset">Reset</button>
+    </div>
+
+    <div id="duration-container">
+      <div id="pomodoro-len">Pomodoro Length</div>
+      <div id="break-len">Break Length</div>
+      <button
+        id="pomodoro-minus"
+        class="change-duration"
+        data-for-mode="pomodoro"
+        value="-"
+      >
+        -
+      </button>
+      <div id="pomodoro-min">25</div>
+      <button
+        id="pomodoro-plus"
+        class="change-duration"
+        data-for-mode="pomodoro"
+        value="+"
+      >
+        +
+      </button>
+      <button
+        id="break-minus"
+        class="change-duration"
+        data-for-mode="break"
+        value="-"
+      >
+        -
+      </button>
+      <div id="break-min">5</div>
+      <button
+        id="break-plus"
+        class="change-duration"
+        data-for-mode="break"
+        value="+"
+      >
+        +
+      </button>
+    </div>
+    <audio loop="true" src="bell.mp3" type="audio/mpeg"></audio>
+    <script src="timer.js"></script>
+  </body>
+</html>
