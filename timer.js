@@ -5,13 +5,11 @@ const StartButtonState = Object.freeze({
 
 const Modes = Object.freeze({
   POMODORO: "pomodoro",
-  BREAK: "break"
+  BREAK: "break",
+  LONGBREAK: "longbreak"
 });
 
-let modeLengths = {
-  pomodoro: "25:00",
-  break: "5:00"
-};
+const POMODOROS_UNTIL_LONGBREAK = 4;
 
 const bell = document.querySelector("audio");
 const durationContainer = document.querySelector("#duration-container");
@@ -25,7 +23,27 @@ const title = document.querySelector("title");
 
 let tickingInterval;
 let isTicking = false;
+let numPomodoros = 0;
 let currentMode = Modes.POMODORO;
+
+let modeLengths = {
+  pomodoro: "25:00",
+  break: "5:00",
+  longbreak: "10:00"
+};
+
+function updateMode() {
+  if (currentMode === Modes.POMODORO) {
+    numPomodoros++;
+    if (numPomodoros % POMODOROS_UNTIL_LONGBREAK === 0) {
+      currentMode = Modes.LONGBREAK;
+      return;
+    }
+    currentMode = Modes.BREAK;
+    return;
+  }
+  currentMode = Modes.POMODORO;
+}
 
 function tickTimer() {
   let [minutes, seconds] = timer.textContent.split(":");
@@ -33,7 +51,7 @@ function tickTimer() {
   if (minutes === "00" && seconds === "00") {
     bell.play();
     clearInterval(tickingInterval);
-    currentMode = currentMode === Modes.POMODORO ? Modes.BREAK : Modes.POMODORO;
+    updateMode();
     setDisplay(startButton, "none");
     resetTimer();
     return;
@@ -43,9 +61,9 @@ function tickTimer() {
   seconds = +seconds;
 
   if (seconds > 0) {
-    seconds = seconds - 1;
+    seconds--;
   } else {
-    minutes = minutes - 1;
+    minutes--;
     seconds = 59;
   }
 
@@ -76,8 +94,6 @@ function resetTimer() {
   isTicking = false;
   clearInterval(tickingInterval);
   setStartButtonState(StartButtonState.START);
-
-  timer.textContent = modeLengths[currentMode];
   title.textContent = "Pomodoro Timer";
 }
 
@@ -138,6 +154,7 @@ resetButton.addEventListener("click", () => {
   resetTimer();
   setDisplay(startButton, "inline-block");
   setDisplay(durationContainer, "grid");
+  timer.textContent = modeLengths[currentMode];
 });
 
 durationButtons.forEach(button => {

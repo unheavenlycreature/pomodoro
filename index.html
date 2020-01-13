@@ -20,7 +20,8 @@
 
     <div id="duration-container">
       <div id="pomodoro-len">Pomodoro Length</div>
-      <div id="break-len">Break Length</div>
+      <div id="break-len">Short Break Length</div>
+      <div id="longbreak-len">Long Break Length</div>
       <button
         id="pomodoro-minus"
         class="change-duration"
@@ -51,6 +52,23 @@
         id="break-plus"
         class="change-duration"
         data-for-mode="break"
+        value="+"
+      >
+        +
+      </button>
+      <button
+        id="longbreak-minus"
+        class="change-duration"
+        data-for-mode="longbreak"
+        value="-"
+      >
+        -
+      </button>
+      <div id="longbreak-min">10</div>
+      <button
+        id="longbreak-plus"
+        class="change-duration"
+        data-for-mode="longbreak"
         value="+"
       >
         +

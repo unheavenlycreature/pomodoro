@@ -20,6 +20,7 @@ button:hover {
 }
 
 button.change-duration {
+  justify-self: center;
   transition-duration: 0.4s;
   border-color: #b13333;
   border-radius: 4px;
@@ -58,8 +59,8 @@ button.change-duration:hover {
   grid-column-gap: 20px;
   grid-row-gap: 10px;
   grid-template-areas:
-    "pomodoro-len pomodoro-len pomodoro-len break-len break-len break-len"
-    "pomodoro-minus pomodoro-min pomodoro-plus break-minus break-min break-plus";
+    "break-len break-len break-len pomodoro-len pomodoro-len pomodoro-len longbreak-len longbreak-len longbreak-len"
+    "break-minus break-min break-plus pomodoro-minus pomodoro-min pomodoro-plus longbreak-minus longbreak-min longbreak-plus";
 }
 
 #pomodoro-len {
@@ -70,12 +71,17 @@ button.change-duration:hover {
   grid-area: break-len;
 }
 
+#longbreak-len {
+  grid-area: longbreak-len;
+}
+
 #pomodoro-minus {
   grid-area: pomodoro-minus;
 }
 
 #pomodoro-min {
   grid-area: pomodoro-min;
+  justify-self: center;
 }
 
 #pomodoro-plus {
@@ -88,8 +94,22 @@ button.change-duration:hover {
 
 #break-min {
   grid-area: break-min;
+  justify-self: center;
 }
 
 #break-plus {
   grid-area: break-plus;
+}
+
+#longbreak-min {
+  grid-area: longbreak-min;
+  justify-self: center;
+}
+
+#longbreak-plus {
+  grid-area: longbreak-plus;
+}
+
+#longbreak-minus {
+  grid-area: longbreak-minus;
 }
